@@ -14,6 +14,17 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r Paquetes, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xaringanExtra)
+library(icons)
+library(fontawesome) 
+library(emo) 
+library(gt)
+```
+
+
 ## 1. Informacion basica que compone a un Rmarkdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -239,20 +250,52 @@ summary(pressure)
   </tbody>
 </table>
 
+### Tablas de salida con kable
+
+```{r}
+iris %>%
+  head() %>%
+  knitr::kable(format = "html")
+```
+
+### Tablas con datatable
+
+```{r, echo=TRUE}
+iris %>%
+  head(3) %>%
+  DT::datatable()
+```
+
+### [`library(gt)`](https://gt.rstudio.com/index.html)
+
+```{r, echo=TRUE, eval=TRUE}
+iris %>% 
+  head() %>%
+  gt::gt() %>%
+  gt::tab_spanner(label = "Petalo", columns = vars(Petal.Length,Petal.Width)) %>%
+  gt::tab_spanner(label = "Sepalo", columns = vars(Sepal.Length,Sepal.Width))
+```
 
 ## 7. Agregar imagenes en un reporte 
+
+### Desde el link de Internet
 
 Podemos anexar imagenes a nuestros archivos tomando figuras de internet como el siguiente ejemplo.
 
 ![The Carpentries Logo](https://carpentries.org/assets/img/TheCarpentries.svg)
-
+### Una imagen contenida como archivo
 
 Ademas, podemos anexar archivos contenidos en nuestra computadora:
 
 
-```{r eval=FALSE}
-knitr::include_graphics("pressure.png")
+```{r Imagen}
+knitr::include_graphics("figures/dplyr_joins.png")
 ```
+
+### Usando HTML
+
+<img src="imagenes/rladies_logo.jpeg" width="25%"
+alt="logo-rladies"/>
 
 
 ## 8. Realizar calculos en un texto 
@@ -373,4 +416,20 @@ Para finalizar podemos agregarle un indice a nuestro reporte editando la parte s
 
 Para mas temas puedes entrar al siguiente link: https://www.datadreaming.org/post/r-markdown-theme-gallery/
 
+## 13. Configuración de los Chunks
+
+En los chunks algunas cosas que se pueden especificar son: `{r setup1, include = FALSE, echo= FALSE, eval=FALSE}`:
+
+  - `include = FALSE`: no muestra el código. 
+  - `echo = FALSE`: no muestra el resultado en el documento final.
+  - `warning = FALSE`: no muestra los warnings.
+  - `error = FALSE`: no muestra los mensajes de error.
+  - `message = FALSE`: no muestra los mensajes.
+  - `collapse = TRUE`: de ser posible colapsa la fuente y outputs de los bloques de código.
+  - `eval = FALSE`: no evalúa los códigos, sirve para mostrar bloques de código sin que emita resultados.
+  - `fig.dim = c(n,m)`: vector numérico para el tamaño de los plots.
+  - `fig.cap:"message"`:para colocar un caption a los plots.
+  - `highlight.output=c(n, m)`: resaltar líneas n,m del código.
+
+Otras opciones para los chunks están [aquí](https://yihui.org/knitr/options/#chunk-options).
 
