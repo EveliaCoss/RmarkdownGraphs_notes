@@ -20,6 +20,16 @@ distribución MiKTeX, MacTeX, and TeX Live o TinyTex:
 install.packages('tinytex')
 tinytex::install_tinytex()
 ```
+
+### Theme
+
+Pagina de colores para [Rmarkwdown](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
+
+### Cursos
+
+- [2022- Rmarkdwon y LATEX - Dra. Haydee Peruyero- R ladies Morelia](https://github.com/HaydeePeruyero/Rmarkdown_and_LaTeX)
+- [2023 - Rmarkdown - Dra. Evelia Coss](https://github.com/EveliaCoss/RNAseq_classFEB2023)
+
 ### Referencias 📚
 
 - [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
