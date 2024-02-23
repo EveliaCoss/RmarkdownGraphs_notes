@@ -23,7 +23,7 @@ tinytex::install_tinytex()
 
 ### Theme
 
-Pagina de colores para [Rmarkwdown](https://www.datadreaming.org/post/r-markdown-theme-gallery/)
+Pagina de colores para [Rmarkwdown](https://rpubs.com/ranydc/rmarkdown_themes)
 
 ### Cursos
 
